@@ -63,6 +63,8 @@
 chmod +x /etc/rc.d/rc.easytier 2>/dev/null || true
 chmod +x /usr/local/emhttp/plugins/easytier/event/disks_mounted 2>/dev/null || true
 
+mkdir -p /boot/config/plugins/easytier 2>/dev/null || true
+
 if [ ! -f /boot/config/plugins/easytier/easytier.conf ]; then
   echo 'NETWORK_NAME="easytier"' > /boot/config/plugins/easytier/easytier.conf
   echo 'NETWORK_SECRET=""' >> /boot/config/plugins/easytier/easytier.conf
