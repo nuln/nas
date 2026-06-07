@@ -143,7 +143,11 @@ function refresh() {
     document.getElementById('et-routes-content').innerHTML = h;
   }).catch(function(){});
 }
-function doAction(a) { request(a,'POST').then(refresh).catch(function(){}); }
+function doAction(a) {
+  request(a,'POST').then(function() {
+    setTimeout(refresh, 2000);
+  }).catch(function(){});
+}
 document.getElementById('et-save').addEventListener('click', function() {
   var m = document.getElementById('et-cfg-msg');
   request('save_config','POST',{
