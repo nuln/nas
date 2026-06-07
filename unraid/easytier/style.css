@@ -1,29 +1,18 @@
 .tablesorter .filtered { display: none; }
 .tablesorter-filter.disabled { display: none; }
 
-.clearfix { clear: both; margin-bottom: 12px; }
-
-/* Connection table - fixed first column for label/value pairs */
+/* Connection table - fixed first column */
+table.unraid.statusTable:first-of-type { margin-bottom: 16px; }
 table.unraid.statusTable:first-of-type th,
-table.unraid.statusTable:first-of-type td {
-  padding: 6px 10px;
-  vertical-align: middle;
-}
+table.unraid.statusTable:first-of-type td { padding: 6px 10px; vertical-align: middle; }
 table.unraid.statusTable:first-of-type th:first-child,
-table.unraid.statusTable:first-of-type td:first-child {
-  width: 140px;
-  white-space: nowrap;
-}
-table.unraid.statusTable:first-of-type td:last-child {
-  word-break: break-word;
-}
+table.unraid.statusTable:first-of-type td:first-child { width: 140px; white-space: nowrap; }
+table.unraid.statusTable:first-of-type td:last-child { word-break: break-word; }
 
-/* All status tables */
-table.unraid.statusTable {
-  width: 100%;
-}
-table.unraid.statusTable th,
-table.unraid.statusTable td {
-  padding: 6px 10px;
-  vertical-align: middle;
-}
+/* Peers and routes tables */
+table.unraid.statusTable:nth-of-type(2),
+table.unraid.statusTable:nth-of-type(3) { margin-bottom: 16px; }
+table.unraid.statusTable:nth-of-type(2) th,
+table.unraid.statusTable:nth-of-type(2) td,
+table.unraid.statusTable:nth-of-type(3) th,
+table.unraid.statusTable:nth-of-type(3) td { padding: 6px 10px; vertical-align: middle; }

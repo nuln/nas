@@ -12,28 +12,21 @@ $pluginPath = '/plugins/' . $plugin;
 <link type="text/css" rel="stylesheet" href="<?= "{$pluginPath}/style.css"; ?>">
 <script src="/webGui/javascript/jquery.tablesorter.widgets.js"></script>
 
-<div style="clear:both; margin-bottom:12px;">
 <table class="unraid statusTable">
-<thead><tr><th style="width:30%">Connection</th><th style="width:70%">Value</th></tr></thead>
+<thead><tr><th>Property</th><th>Value</th></tr></thead>
 <tbody id="et-node-info"><tr><td colspan="2"><div class="spinner">Loading...</div></td></tr></tbody>
 </table>
-</div>
 
-<div style="clear:both; margin-bottom:12px;">
 <table class="unraid statusTable">
 <thead><tr><th>Node</th><th>Connection</th><th>Latency</th><th>Loss</th></tr></thead>
 <tbody id="et-peers-content"><tr><td colspan="4"><div class="spinner">Loading...</div></td></tr></tbody>
 </table>
-</div>
 
-<div style="clear:both; margin-bottom:12px;">
 <table class="unraid statusTable">
 <thead><tr><th>Node</th><th>Proxy CIDRs</th><th>Next Hop</th><th>Latency</th></tr></thead>
 <tbody id="et-routes-content"><tr><td colspan="4"><div class="spinner">Loading...</div></td></tr></tbody>
 </table>
-</div>
 
-<div style="clear:both; margin-bottom:12px;">
 <table><tr><td style="padding:4px 0">
   <input type="button" value="Start" onclick="doAction('start')">
   <input type="button" value="Stop" onclick="doAction('stop')">
@@ -41,9 +34,8 @@ $pluginPath = '/plugins/' . $plugin;
   <input type="button" value="Refresh" onclick="refresh()">
   <span id="et-status" style="margin-left:8px;font-size:12px;color:#888;"></span>
 </td></tr></table>
-</div>
 
-<hr style="clear:both; margin:12px 0;">
+<hr style="margin:16px 0;">
 
 <table class="unraid tablesorter"><thead><tr><td>Network Configuration</td></tr></thead></table>
 
