@@ -72,7 +72,7 @@ AUTOSTART="yes"
 EOF
 fi
 
-chmod +x /usr/local/emhttp/plugins/easytier/event/disks_mounted
+
 ]]>
 </INLINE>
 </FILE>
