@@ -2,13 +2,14 @@ Menu="NetworkServices"
 Icon="easytier.png"
 Title="EasyTier"
 Type="xmenu"
+Tabs="true"
 Markdown="false"
 ---
 <?php
 $plugin = 'easytier';
 $pluginPath = '/plugins/' . $plugin;
 ?>
-<link type="text/css" rel="stylesheet" href="<?= "/{$pluginPath}/style.css"; ?>">
+<link type="text/css" rel="stylesheet" href="<?= "{$pluginPath}/style.css"; ?>">
 <script src="/webGui/javascript/jquery.tablesorter.widgets.js"></script>
 
 <table class="unraid statusTable">
