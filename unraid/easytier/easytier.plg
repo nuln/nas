@@ -56,7 +56,7 @@
 <FILE Run="/bin/bash">
 <INLINE>
 <![CDATA[
-chmod +x /etc/rc.d/rc.easytier
+chmod +x /etc/rc.d/rc.easytier 2>/dev/null || true
 
 if [ ! -f /boot/config/plugins/easytier/easytier.conf ]; then
 cat > /boot/config/plugins/easytier/easytier.conf <<EOF
@@ -71,8 +71,6 @@ PROXY_CIDRS=""
 AUTOSTART="yes"
 EOF
 fi
-
-
 ]]>
 </INLINE>
 </FILE>
