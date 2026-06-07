@@ -61,7 +61,7 @@ if (!is_dir($configDir)) {
     @mkdir($configDir, 0777, true);
 }
 
-$action = $_GET['action'] ?? 'status';
+$action = $_GET['action'] ?? $_POST['action'] ?? 'status';
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
 if (!file_exists($serviceScript)) {
@@ -93,7 +93,7 @@ if (in_array($action, ['start', 'stop', 'restart'], true)) {
 
 if ($action === 'save_config') {
     if ($method !== 'POST') json_out(false, [], 'method not allowed');
-    $body = read_body_json();
+    $body = $_POST;
 
     $fields = [
         'network_name', 'network_secret', 'dhcp', 'virtual_ipv4',

@@ -3,7 +3,7 @@ const api = '/plugins/easytier/api.php';
 function request(a, m, p) {
   return new Promise(function(r, j) {
     if (m === 'POST') {
-      $.post(api, {action: a}, function(data) {
+      $.post(api, $.extend({action: a}, p || {}), function(data) {
         if (data.success) r(data); else j(new Error(data.error || 'Failed'));
       }, 'json').fail(function(x) { j(new Error('HTTP ' + x.status)); });
     } else {
