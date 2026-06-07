@@ -1,0 +1,6 @@
+.tablesorter .filtered {
+    display: none;
+}
+.tablesorter-filter.disabled {
+  display: none;
+}

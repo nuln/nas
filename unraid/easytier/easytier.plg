@@ -1,0 +1,131 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+  <!ENTITY name      "easytier">
+  <!ENTITY author    "nuln">
+  <!ENTITY version   "2026.06.07">
+  <!ENTITY gitURL    "https://github.com/&author;/nas">
+  <!ENTITY branch    "main">
+  <!ENTITY baseURL   "https://raw.githubusercontent.com/&author;/nas/&branch;/unraid/&name;">
+  <!ENTITY pluginURL "&baseURL;/&name;.plg">
+  <!ENTITY plugin    "/boot/config/plugins/&name;">
+  <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+]>
+
+<PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.9.0" support="https://github.com/&author;/nas">
+
+<CHANGES>
+###2026.06.07
+- Upgrade easytier to v2.6.4
+- Remove easytier-web-embed dependency
+- Use easytier-cli for status
+- Tailscale-style settings page
+
+###2026.05.12
+- Add built-in Settings page with service controls
+- Add plugin API backend and log viewer
+- Add config persistence and autostart support
+- Add boot event hook for optional autostart
+
+###2026.05.09
+- Initial release
+
+</CHANGES>
+
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.tgz" Run="installpkg">
+<URL>&baseURL;/&name;-&version;.tgz</URL>
+</FILE>
+
+<FILE Name="/boot/config/plugins/&name;/rc.easytier">
+<URL>&baseURL;/rc.easytier</URL>
+</FILE>
+
+<FILE Name="/etc/rc.d/rc.easytier">
+<LOCAL>/boot/config/plugins/&name;/rc.easytier</LOCAL>
+</FILE>
+
+<FILE Name="/boot/config/plugins/&name;/event.disks_mounted">
+<URL>&baseURL;/event.disks_mounted</URL>
+</FILE>
+
+<FILE Name="&emhttp;/event/disks_mounted">
+<LOCAL>/boot/config/plugins/&name;/event.disks_mounted</LOCAL>
+</FILE>
+
+<FILE Name="&emhttp;/easytier.page">
+<URL>&baseURL;/easytier.page</URL>
+</FILE>
+
+<FILE Name="&emhttp;/api.php">
+<URL>&baseURL;/api.php</URL>
+</FILE>
+
+<FILE Name="&emhttp;/style.css">
+<URL>&baseURL;/style.css</URL>
+</FILE>
+
+<FILE Name="/boot/config/plugins/&name;/icon.png">
+<URL>&baseURL;/logo.png</URL>
+</FILE>
+
+<FILE Name="/usr/local/emhttp/plugins/&name;/images/&name;.png">
+<LOCAL>/boot/config/plugins/&name;/icon.png</LOCAL>
+</FILE>
+
+<FILE Name="&emhttp;/README.md">
+<INLINE>
+**easytier**
+
+A simple, secure, decentralized virtual private network solution powered by Rust and Tokio
+
+unRAID plugin for EasyTier mesh VPN.
+
+Manage directly from Settings - EasyTier.
+
+Source: https://github.com/EasyTier/Easytier
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash">
+<INLINE>
+
+chmod +x /etc/rc.d/rc.easytier
+
+if [ ! -f /boot/config/plugins/easytier/easytier.conf ]; then
+cat > /boot/config/plugins/easytier/easytier.conf <<EOF
+# EasyTier plugin configuration
+NETWORK_NAME="easytier"
+NETWORK_SECRET=""
+DHCP="yes"
+VIRTUAL_IPV4=""
+HOSTNAME=""
+PEER_URLS=""
+LISTENER_URLS="tcp://0.0.0.0:11010, udp://0.0.0.0:11010"
+PROXY_CIDRS=""
+AUTOSTART="yes"
+EOF
+fi
+
+chmod +x /usr/local/emhttp/plugins/easytier/event/disks_mounted
+
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+
+echo "------------------------"
+echo "---Uninstalling easytier---"
+echo "------------------------"
+removepkg &name;-&version;
+rm -f /etc/rc.d/rc.easytier
+rm -rf &plugin;
+rm -rf &emhttp;
+echo
+echo "---------------------------------------"
+echo "---Uninstallation of easytier complete!---"
+echo "---------------------------------------"
+echo
+
+</INLINE>
+</FILE>
+</PLUGIN>

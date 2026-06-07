@@ -1,0 +1,15 @@
+#!/bin/sh
+
+CONFIG_FILE="/boot/config/plugins/easytier/easytier.conf"
+SERVICE_SCRIPT="/etc/rc.d/rc.easytier"
+
+if [ ! -f "$CONFIG_FILE" ] || [ ! -x "$SERVICE_SCRIPT" ]; then
+    exit 0
+fi
+
+# shellcheck source=/boot/config/plugins/easytier/easytier.conf
+. "$CONFIG_FILE"
+
+if [ "${AUTOSTART:-yes}" = "yes" ]; then
+    "$SERVICE_SCRIPT" start >/dev/null 2>&1
+fi
