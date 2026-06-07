@@ -5,10 +5,9 @@
   <!ENTITY version   "2026.06.07">
   <!ENTITY plugin    "/boot/config/plugins/&name;">
   <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
-  <!ENTITY base      "https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier">
 ]>
 
-<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&base;/&name;.plg" min="6.9.0" support="https://github.com/nuln/nas">
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/easytier.plg" min="6.9.0" support="https://github.com/nuln/nas">
 
 <CHANGES>
 ###2026.06.07
@@ -16,67 +15,10 @@
 - Remove easytier-web-embed dependency
 - Use easytier-cli for status
 - Tailscale-style settings page
-
-###2026.05.12
-- Add built-in Settings page with service controls
-- Add plugin API backend and log viewer
-- Add config persistence and autostart support
-- Add boot event hook for optional autostart
-
-###2026.05.09
-- Initial release
 </CHANGES>
 
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;.tgz" Run="installpkg">
-<URL>&base;/&name;-&version;.tgz</URL>
-</FILE>
-
-<FILE Name="/boot/config/plugins/&name;/rc.easytier">
-<URL>&base;/rc.easytier</URL>
-</FILE>
-
-<FILE Name="/etc/rc.d/rc.easytier">
-<LOCAL>/boot/config/plugins/&name;/rc.easytier</LOCAL>
-</FILE>
-
-<FILE Name="/boot/config/plugins/&name;/event.disks_mounted">
-<URL>&base;/event.disks_mounted</URL>
-</FILE>
-
-<FILE Name="&emhttp;/event/disks_mounted">
-<LOCAL>/boot/config/plugins/&name;/event.disks_mounted</LOCAL>
-</FILE>
-
-<FILE Name="&emhttp;/easytier.page">
-<URL>&base;/easytier.page</URL>
-</FILE>
-
-<FILE Name="&emhttp;/api.php">
-<URL>&base;/api.php</URL>
-</FILE>
-
-<FILE Name="&emhttp;/style.css">
-<URL>&base;/style.css</URL>
-</FILE>
-
-<FILE Name="/boot/config/plugins/&name;/icon.png">
-<URL>&base;/logo.png</URL>
-</FILE>
-
-<FILE Name="/usr/local/emhttp/plugins/&name;/images/&name;.png">
-<LOCAL>/boot/config/plugins/&name;/icon.png</LOCAL>
-</FILE>
-
-<FILE Name="&emhttp;/README.md">
-<INLINE>
-**easytier**
-
-unRAID plugin for EasyTier mesh VPN.
-
-Manage directly from Settings - EasyTier.
-
-Source: https://github.com/EasyTier/Easytier
-</INLINE>
+<URL>https://github.com/nuln/nas/raw/master/unraid/easytier/easytier-2026.06.07.tgz</URL>
 </FILE>
 
 <FILE Run="/bin/bash">
@@ -85,7 +27,6 @@ chmod +x /etc/rc.d/rc.easytier
 
 if [ ! -f /boot/config/plugins/easytier/easytier.conf ]; then
 cat > /boot/config/plugins/easytier/easytier.conf <<EOF
-# EasyTier plugin configuration
 NETWORK_NAME="easytier"
 NETWORK_SECRET=""
 DHCP="yes"
@@ -104,18 +45,11 @@ chmod +x /usr/local/emhttp/plugins/easytier/event/disks_mounted
 
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
-echo "------------------------"
-echo "---Uninstalling easytier---"
-echo "------------------------"
 removepkg &name;-&version;
 rm -f /etc/rc.d/rc.easytier
-rm -rf &plugin;
 rm -rf &emhttp;
-echo
-echo "---------------------------------------"
-echo "---Uninstallation of easytier complete!---"
-echo "---------------------------------------"
-echo
+rm -f /boot/config/plugins/easytier/easytier-*.tgz
 </INLINE>
 </FILE>
+
 </PLUGIN>
