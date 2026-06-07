@@ -33,6 +33,10 @@
 <URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/event.disks_mounted</URL>
 </FILE>
 
+<FILE Name="/usr/local/emhttp/plugins/easytier/event/disks_mounted">
+<LOCAL>/boot/config/plugins/easytier/event.disks_mounted</LOCAL>
+</FILE>
+
 <FILE Name="/usr/local/emhttp/plugins/easytier/easytier.page">
 <URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/easytier.page</URL>
 </FILE>
@@ -57,19 +61,18 @@
 <INLINE>
 <![CDATA[
 chmod +x /etc/rc.d/rc.easytier 2>/dev/null || true
+chmod +x /usr/local/emhttp/plugins/easytier/event/disks_mounted 2>/dev/null || true
 
 if [ ! -f /boot/config/plugins/easytier/easytier.conf ]; then
-cat > /boot/config/plugins/easytier/easytier.conf <<EOF
-NETWORK_NAME="easytier"
-NETWORK_SECRET=""
-DHCP="yes"
-VIRTUAL_IPV4=""
-HOSTNAME=""
-PEER_URLS=""
-LISTENER_URLS="tcp://0.0.0.0:11010, udp://0.0.0.0:11010"
-PROXY_CIDRS=""
-AUTOSTART="yes"
-EOF
+  echo 'NETWORK_NAME="easytier"' > /boot/config/plugins/easytier/easytier.conf
+  echo 'NETWORK_SECRET=""' >> /boot/config/plugins/easytier/easytier.conf
+  echo 'DHCP="yes"' >> /boot/config/plugins/easytier/easytier.conf
+  echo 'VIRTUAL_IPV4=""' >> /boot/config/plugins/easytier/easytier.conf
+  echo 'HOSTNAME=""' >> /boot/config/plugins/easytier/easytier.conf
+  echo 'PEER_URLS=""' >> /boot/config/plugins/easytier/easytier.conf
+  echo 'LISTENER_URLS="tcp://0.0.0.0:11010, udp://0.0.0.0:11010"' >> /boot/config/plugins/easytier/easytier.conf
+  echo 'PROXY_CIDRS=""' >> /boot/config/plugins/easytier/easytier.conf
+  echo 'AUTOSTART="yes"' >> /boot/config/plugins/easytier/easytier.conf
 fi
 ]]>
 </INLINE>
