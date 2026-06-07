@@ -101,12 +101,15 @@ $pluginPath = '/plugins/' . $plugin;
 const api = '<?= $pluginPath; ?>/api.php';
 function request(a, m, p) {
   return new Promise(function(r, j) {
-    var o = { method: m || 'GET' };
-    if (p) { o.headers = {'Content-Type':'application/json'}; o.body = JSON.stringify(p); }
-    fetch(api+'?action='+encodeURIComponent(a), o)
-      .then(function(x){return x.json()})
-      .then(function(x){if(x.success) r(x); else j(new Error(x.error||'Failed'))})
-      .catch(j);
+    if (m === 'POST') {
+      $.post(api, {action: a}, function(data) {
+        if (data.success) r(data); else j(new Error(data.error || 'Failed'));
+      }, 'json').fail(function(x) { j(new Error('HTTP ' + x.status)); });
+    } else {
+      $.get(api, {action: a}, function(data) {
+        if (data.success) r(data); else j(new Error(data.error || 'Failed'));
+      }, 'json').fail(function(x) { j(new Error('HTTP ' + x.status)); });
+    }
   });
 }
 function refresh() {
