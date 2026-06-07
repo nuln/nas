@@ -8,11 +8,13 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/easytier.plg" min="6.9.0" support="https://github.com/nuln/nas">
 
 <CHANGES>
+<![CDATA[
 ###2026.06.07
 - Upgrade easytier to v2.6.4
 - Remove easytier-web-embed dependency
 - Use easytier-cli for status
 - Tailscale-style settings page
+]]>
 </CHANGES>
 
 <FILE Name="/boot/config/plugins/easytier/easytier-2026.06.07.tgz" Run="installpkg">
@@ -21,6 +23,7 @@
 
 <FILE Run="/bin/bash">
 <INLINE>
+<![CDATA[
 chmod +x /etc/rc.d/rc.easytier
 
 if [ ! -f /boot/config/plugins/easytier/easytier.conf ]; then
@@ -38,15 +41,18 @@ EOF
 fi
 
 chmod +x /usr/local/emhttp/plugins/easytier/event/disks_mounted
+]]>
 </INLINE>
 </FILE>
 
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
+<![CDATA[
 removepkg easytier-2026.06.07
 rm -f /etc/rc.d/rc.easytier
 rm -rf /usr/local/emhttp/plugins/easytier
 rm -f /boot/config/plugins/easytier/easytier-*.tgz
+]]>
 </INLINE>
 </FILE>
 
