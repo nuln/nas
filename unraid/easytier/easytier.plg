@@ -49,6 +49,10 @@
 <URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/style.css</URL>
 </FILE>
 
+<FILE Name="/usr/local/emhttp/plugins/easytier/easytier.js">
+<URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/easytier.js</URL>
+</FILE>
+
 <FILE Name="/boot/config/plugins/easytier/icon.png">
 <URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/logo.png</URL>
 </FILE>
