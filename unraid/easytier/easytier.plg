@@ -4,7 +4,7 @@
   <!ENTITY author    "nuln">
   <!ENTITY version   "2026.06.07">
   <!ENTITY gitURL    "https://github.com/&author;/nas">
-  <!ENTITY branch    "main">
+  <!ENTITY branch    "master">
   <!ENTITY baseURL   "https://raw.githubusercontent.com/&author;/nas/&branch;/unraid/&name;">
   <!ENTITY pluginURL "&baseURL;/&name;.plg">
   <!ENTITY plugin    "/boot/config/plugins/&name;">
