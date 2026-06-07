@@ -1,6 +1,5 @@
-.tablesorter .filtered {
-    display: none;
-}
-.tablesorter-filter.disabled {
-  display: none;
-}
+.tablesorter .filtered { display: none; }
+.tablesorter-filter.disabled { display: none; }
+
+table.unraid.statusTable { margin-bottom: 12px; }
+table.unraid.statusTable td { vertical-align: middle; }
