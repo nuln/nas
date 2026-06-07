@@ -1,5 +1,29 @@
 .tablesorter .filtered { display: none; }
 .tablesorter-filter.disabled { display: none; }
 
-table.unraid.statusTable { margin-bottom: 12px; }
-table.unraid.statusTable td { vertical-align: middle; }
+.clearfix { clear: both; margin-bottom: 12px; }
+
+/* Connection table - fixed first column for label/value pairs */
+table.unraid.statusTable:first-of-type th,
+table.unraid.statusTable:first-of-type td {
+  padding: 6px 10px;
+  vertical-align: middle;
+}
+table.unraid.statusTable:first-of-type th:first-child,
+table.unraid.statusTable:first-of-type td:first-child {
+  width: 140px;
+  white-space: nowrap;
+}
+table.unraid.statusTable:first-of-type td:last-child {
+  word-break: break-word;
+}
+
+/* All status tables */
+table.unraid.statusTable {
+  width: 100%;
+}
+table.unraid.statusTable th,
+table.unraid.statusTable td {
+  padding: 6px 10px;
+  vertical-align: middle;
+}
