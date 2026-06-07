@@ -41,6 +41,14 @@
 <URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/easytier.page</URL>
 </FILE>
 
+<FILE Name="/usr/local/emhttp/plugins/easytier/easytier-1-Settings.page">
+<URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/easytier-1-Settings.page</URL>
+</FILE>
+
+<FILE Name="/usr/local/emhttp/plugins/easytier/easytier-2-Manage.page">
+<URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/easytier-2-Manage.page</URL>
+</FILE>
+
 <FILE Name="/usr/local/emhttp/plugins/easytier/api.php">
 <URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/api.php</URL>
 </FILE>
