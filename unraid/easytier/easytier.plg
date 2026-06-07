@@ -21,6 +21,38 @@
 <URL>https://github.com/nuln/nas/raw/master/unraid/easytier/easytier-2026.06.07.tgz</URL>
 </FILE>
 
+<FILE Name="/boot/config/plugins/easytier/rc.easytier">
+<URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/rc.easytier</URL>
+</FILE>
+
+<FILE Name="/etc/rc.d/rc.easytier">
+<LOCAL>/boot/config/plugins/easytier/rc.easytier</LOCAL>
+</FILE>
+
+<FILE Name="/boot/config/plugins/easytier/event.disks_mounted">
+<URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/event.disks_mounted</URL>
+</FILE>
+
+<FILE Name="/usr/local/emhttp/plugins/easytier/easytier.page">
+<URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/easytier.page</URL>
+</FILE>
+
+<FILE Name="/usr/local/emhttp/plugins/easytier/api.php">
+<URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/api.php</URL>
+</FILE>
+
+<FILE Name="/usr/local/emhttp/plugins/easytier/style.css">
+<URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/style.css</URL>
+</FILE>
+
+<FILE Name="/boot/config/plugins/easytier/icon.png">
+<URL>https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier/logo.png</URL>
+</FILE>
+
+<FILE Name="/usr/local/emhttp/plugins/easytier/images/easytier.png">
+<LOCAL>/boot/config/plugins/easytier/icon.png</LOCAL>
+</FILE>
+
 <FILE Run="/bin/bash">
 <INLINE>
 <![CDATA[
