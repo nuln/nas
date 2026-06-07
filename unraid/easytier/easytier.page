@@ -144,9 +144,15 @@ function refresh() {
   }).catch(function(){});
 }
 function doAction(a) {
-  request(a,'POST').then(function() {
+  var s = document.getElementById('et-status');
+  s.textContent = a + '...';
+  request(a,'POST').then(function(r) {
+    var out = (r.data && r.data.output) ? r.data.output : 'OK';
+    s.textContent = out.replace(/\n/g, ' ');
     setTimeout(refresh, 2000);
-  }).catch(function(){});
+  }).catch(function(e) {
+    s.textContent = 'Error: ' + e.message;
+  });
 }
 document.getElementById('et-save').addEventListener('click', function() {
   var m = document.getElementById('et-cfg-msg');
