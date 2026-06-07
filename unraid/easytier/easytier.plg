@@ -3,15 +3,12 @@
   <!ENTITY name      "easytier">
   <!ENTITY author    "nuln">
   <!ENTITY version   "2026.06.07">
-  <!ENTITY gitURL    "https://github.com/&author;/nas">
-  <!ENTITY branch    "master">
-  <!ENTITY baseURL   "https://raw.githubusercontent.com/&author;/nas/&branch;/unraid/&name;">
-  <!ENTITY pluginURL "&baseURL;/&name;.plg">
   <!ENTITY plugin    "/boot/config/plugins/&name;">
   <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+  <!ENTITY base      "https://raw.githubusercontent.com/nuln/nas/master/unraid/easytier">
 ]>
 
-<PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.9.0" support="https://github.com/&author;/nas">
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&base;/&name;.plg" min="6.9.0" support="https://github.com/nuln/nas">
 
 <CHANGES>
 ###2026.06.07
@@ -28,15 +25,14 @@
 
 ###2026.05.09
 - Initial release
-
 </CHANGES>
 
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;.tgz" Run="installpkg">
-<URL>&baseURL;/&name;-&version;.tgz</URL>
+<URL>&base;/&name;-&version;.tgz</URL>
 </FILE>
 
 <FILE Name="/boot/config/plugins/&name;/rc.easytier">
-<URL>&baseURL;/rc.easytier</URL>
+<URL>&base;/rc.easytier</URL>
 </FILE>
 
 <FILE Name="/etc/rc.d/rc.easytier">
@@ -44,7 +40,7 @@
 </FILE>
 
 <FILE Name="/boot/config/plugins/&name;/event.disks_mounted">
-<URL>&baseURL;/event.disks_mounted</URL>
+<URL>&base;/event.disks_mounted</URL>
 </FILE>
 
 <FILE Name="&emhttp;/event/disks_mounted">
@@ -52,19 +48,19 @@
 </FILE>
 
 <FILE Name="&emhttp;/easytier.page">
-<URL>&baseURL;/easytier.page</URL>
+<URL>&base;/easytier.page</URL>
 </FILE>
 
 <FILE Name="&emhttp;/api.php">
-<URL>&baseURL;/api.php</URL>
+<URL>&base;/api.php</URL>
 </FILE>
 
 <FILE Name="&emhttp;/style.css">
-<URL>&baseURL;/style.css</URL>
+<URL>&base;/style.css</URL>
 </FILE>
 
 <FILE Name="/boot/config/plugins/&name;/icon.png">
-<URL>&baseURL;/logo.png</URL>
+<URL>&base;/logo.png</URL>
 </FILE>
 
 <FILE Name="/usr/local/emhttp/plugins/&name;/images/&name;.png">
@@ -74,8 +70,6 @@
 <FILE Name="&emhttp;/README.md">
 <INLINE>
 **easytier**
-
-A simple, secure, decentralized virtual private network solution powered by Rust and Tokio
 
 unRAID plugin for EasyTier mesh VPN.
 
@@ -87,7 +81,6 @@ Source: https://github.com/EasyTier/Easytier
 
 <FILE Run="/bin/bash">
 <INLINE>
-
 chmod +x /etc/rc.d/rc.easytier
 
 if [ ! -f /boot/config/plugins/easytier/easytier.conf ]; then
@@ -106,13 +99,11 @@ EOF
 fi
 
 chmod +x /usr/local/emhttp/plugins/easytier/event/disks_mounted
-
 </INLINE>
 </FILE>
 
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
-
 echo "------------------------"
 echo "---Uninstalling easytier---"
 echo "------------------------"
@@ -125,7 +116,6 @@ echo "---------------------------------------"
 echo "---Uninstallation of easytier complete!---"
 echo "---------------------------------------"
 echo
-
 </INLINE>
 </FILE>
 </PLUGIN>
